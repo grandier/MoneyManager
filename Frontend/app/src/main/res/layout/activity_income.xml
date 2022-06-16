@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#feb209"
+    android:orientation="vertical"
+    tools:context=".IncomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Income"
+            android:textSize="50sp">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_round_person_outline_24">
+
+        </ImageView>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_marginTop="70dp"
+        android:layout_width="390dp"
+        android:layout_height="510dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/listIncome"
+            android:background="@drawable/roundedrectangle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="600dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/gotoincomecat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Income Category">
+
+        </Button>
+
+        <Button
+            android:id="@+id/gotoexpense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Expenses">
+
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="670dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/incomeadd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Income">
+
+        </Button>
+    </LinearLayout>
+
+</RelativeLayout>
