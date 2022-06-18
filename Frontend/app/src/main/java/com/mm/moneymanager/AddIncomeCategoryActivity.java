@@ -6,6 +6,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +46,30 @@ public class AddIncomeCategoryActivity extends AppCompatActivity {
         mApiService = UtilsApi.getAPIService();
         incomecatname = (EditText) findViewById(R.id.addcategory);
         addincomecat = (Button) findViewById(R.id.categoryaddbutton);
+
+        addincomecat.setEnabled(false);
+
+        incomecatname.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                addincomecat.setEnabled(s.toString().trim().length() != 0);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+
+            }
+        });
 
         addincomecat.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -10,14 +10,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mm.moneymanager.model.IncomeCategoryList;
-import com.mm.moneymanager.model.IncomeList;
+import com.mm.moneymanager.model.ExpenseCategoryList;
 import com.mm.moneymanager.request.BaseApiService;
 import com.mm.moneymanager.request.UtilsApi;
 
@@ -33,66 +31,46 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class IncomeCategoryActivity extends AppCompatActivity {
+public class ExpenseUpdateCatChooseActivity extends AppCompatActivity {
 
     private ArrayList<String> items;
-    private ArrayAdapter<IncomeCategoryList> itemsAdapter;
-    private ArrayList<IncomeCategoryList> categoryincome = new ArrayList<>();
+    private ArrayAdapter<ExpenseCategoryList> itemsAdapter;
+    private ArrayList<ExpenseCategoryList> categoryexpense = new ArrayList<>();
     private ListView lvItems;
-    public static IncomeCategoryList selectedincomecatList = null;
-    private Button addincomecat;
-    private Button backtoincome;
-    private ImageView profile;
+    public static ExpenseCategoryList selectedexpensecatList = null;
+    private Button backtoexpensedetail;
     Context mContext;
     BaseApiService mApiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_income_category);
-        addincomecat = (Button) findViewById(R.id.incomecatadd);
-        backtoincome = (Button) findViewById(R.id.backtoincome);
-        profile = (ImageView) findViewById(R.id.profileincomecategory);
-        lvItems = (ListView) findViewById(R.id.listIncomeCategory);
+        setContentView(R.layout.activity_expense_update_cat_choose);
+        backtoexpensedetail = (Button) findViewById(R.id.backtoexpenseupdatechoose);
+        lvItems = (ListView) findViewById(R.id.updateExpenseCatChoose);
         mContext = this;
         mApiService = UtilsApi.getAPIService();
         getListRequest();
 
-        addincomecat.setOnClickListener(new View.OnClickListener() {
+        backtoexpensedetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mContext, AddIncomeCategoryActivity.class));
-            }
-        });
-
-        backtoincome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(mContext, IncomeActivity.class));
-            }
-        });
-
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(mContext, ProfileActivity.class));
+                startActivity(new Intent(ExpenseUpdateCatChooseActivity.this, ExpenseActivity.class));
             }
         });
 
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectedincomecatList = categoryincome.get(position);
-                Intent intent = new Intent(mContext, IncomeCategoryDetailActivity.class);
-                //intent.putExtra("income", showIncome.get(position));
-                startActivity(intent);
+                selectedexpensecatList = categoryexpense.get(position);
+                startActivity(new Intent(ExpenseUpdateCatChooseActivity.this, UpdateExpenseActivity.class));
             }
         });
     }
 
     void getListRequest() {
         Gson gson = new Gson();
-        mApiService.showcategoryincomeRequest()
+        mApiService.showcategoryexpenseRequest()
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -100,13 +78,13 @@ public class IncomeCategoryActivity extends AppCompatActivity {
                             Toast.makeText(mContext, "Sukses", Toast.LENGTH_SHORT).show();
                             try {
                                 JSONObject jsonRESULTS = new JSONObject(response.body().string());
-                                JSONArray jsonArray = jsonRESULTS.getJSONArray("categoryincome");
+                                JSONArray jsonArray = jsonRESULTS.getJSONArray("categoryexpense");
                                 if (jsonRESULTS.getString("message").equals("Category Found")){
                                     // Jika login berhasil maka data nama yang ada di response API
                                     // akan diparsing ke activity selanjutnya.
-                                    categoryincome = gson.fromJson(jsonArray.toString(), new TypeToken<ArrayList<IncomeCategoryList>>() {}.getType());
-                                    itemsAdapter = new ArrayAdapter<IncomeCategoryList>(getApplicationContext(),
-                                            android.R.layout.simple_list_item_1, categoryincome);
+                                    categoryexpense = gson.fromJson(jsonArray.toString(), new TypeToken<ArrayList<ExpenseCategoryList>>() {}.getType());
+                                    itemsAdapter = new ArrayAdapter<ExpenseCategoryList>(getApplicationContext(),
+                                            android.R.layout.simple_list_item_1, categoryexpense);
                                     lvItems.setAdapter(itemsAdapter);
                                 } else {
                                     // Jika login gagal

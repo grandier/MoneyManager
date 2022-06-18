@@ -7,6 +7,10 @@ router.post('/login',passport.authenticate('local'), mmController.login);
 
 router.post('/register', mmController.register);
 
+router.get('/showuser', mmController.showUser);
+
+router.delete('/deleteuser', mmController.deleteUser);
+
 router.post('/insertcategoryincome', mmController.insertCategoryIncome);
 
 router.post('/insertcategoryexpense', mmController.insertCategoryExpense);

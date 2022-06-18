@@ -10,14 +10,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mm.moneymanager.model.IncomeCategoryList;
-import com.mm.moneymanager.model.IncomeList;
 import com.mm.moneymanager.request.BaseApiService;
 import com.mm.moneymanager.request.UtilsApi;
 
@@ -33,49 +31,32 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class IncomeCategoryActivity extends AppCompatActivity {
+public class IncomeAddCatChooseActivity extends AppCompatActivity {
 
     private ArrayList<String> items;
     private ArrayAdapter<IncomeCategoryList> itemsAdapter;
     private ArrayList<IncomeCategoryList> categoryincome = new ArrayList<>();
     private ListView lvItems;
     public static IncomeCategoryList selectedincomecatList = null;
-    private Button addincomecat;
     private Button backtoincome;
-    private ImageView profile;
     Context mContext;
     BaseApiService mApiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_income_category);
-        addincomecat = (Button) findViewById(R.id.incomecatadd);
-        backtoincome = (Button) findViewById(R.id.backtoincome);
-        profile = (ImageView) findViewById(R.id.profileincomecategory);
-        lvItems = (ListView) findViewById(R.id.listIncomeCategory);
+        setContentView(R.layout.activity_income_add_cat_choose);
+        backtoincome = (Button) findViewById(R.id.backtoincomechoose);
+        lvItems = (ListView) findViewById(R.id.listIncomeCatChoose);
         mContext = this;
         mApiService = UtilsApi.getAPIService();
         getListRequest();
 
-        addincomecat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(mContext, AddIncomeCategoryActivity.class));
-            }
-        });
-
         backtoincome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mContext, IncomeActivity.class));
-            }
-        });
-
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(mContext, ProfileActivity.class));
+                Intent intent = new Intent(IncomeAddCatChooseActivity.this, IncomeActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -83,8 +64,7 @@ public class IncomeCategoryActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedincomecatList = categoryincome.get(position);
-                Intent intent = new Intent(mContext, IncomeCategoryDetailActivity.class);
-                //intent.putExtra("income", showIncome.get(position));
+                Intent intent = new Intent(IncomeAddCatChooseActivity.this, IncomeAddActivity.class);
                 startActivity(intent);
             }
         });

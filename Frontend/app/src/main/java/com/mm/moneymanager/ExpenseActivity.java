@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -50,6 +51,8 @@ public class ExpenseActivity extends AppCompatActivity {
         mApiService = UtilsApi.getAPIService();
         Button gotoexpensecat = (Button) findViewById(R.id.gotoexpensecat);
         Button gotoincome = (Button) findViewById(R.id.gotoincome);
+        Button expenseadd = (Button) findViewById(R.id.expenseadd);
+        ImageView profile = (ImageView) findViewById(R.id.profileexpense);
         lvItems = (ListView) findViewById(R.id.listExpense);
         getListRequest();
 
@@ -64,6 +67,20 @@ public class ExpenseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mContext, ExpenseCategoryActivity.class));
+            }
+        });
+
+        expenseadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, ExpenseAddCatChooseActivity.class));
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, ProfileActivity.class));
             }
         });
 

@@ -9,16 +9,25 @@
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_add_expense_category.xml" value="0.221875" />
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_add_income_category.xml" value="0.5416666666666666" />
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_expense.xml" value="0.37135416666666665" />
+        <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_expense_add.xml" value="0.328125" />
+        <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_expense_add_cat_choose.xml" value="0.328125" />
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_expense_category.xml" value="0.39010416666666664" />
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_expense_category_detail.xml" value="0.5" />
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_expense_detail.xml" value="0.390625" />
+        <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_expense_update_cat_choose.xml" value="0.5416666666666666" />
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_income.xml" value="0.33" />
+        <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_income_add.xml" value="0.5416666666666666" />
+        <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_income_add_cat_choose.xml" value="0.38385416666666666" />
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_income_category.xml" value="0.39010416666666664" />
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_income_category_detail.xml" value="0.39166666666666666" />
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_income_detail.xml" value="0.390625" />
+        <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_income_update_cat_choose.xml" value="0.5276041666666667" />
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_login.xml" value="0.48641304347826086" />
+        <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_profile.xml" value="0.3265625" />
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_register.xml" value="0.26268115942028986" />
+        <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_update_expense.xml" value="0.2994791666666667" />
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_update_expense_category.xml" value="0.39166666666666666" />
+        <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_update_income.xml" value="0.5416666666666666" />
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/activity_update_income_category.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/rafly/Documents/PTN Stuff/UI Kuliah/Tugas Calon Aslab/OOP/Frontend/app/src/main/res/layout/roundedrectangle.xml" value="0.5276041666666667" />
       </map>

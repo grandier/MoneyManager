@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class ExpenseCategoryActivity extends AppCompatActivity {
     public static ExpenseCategoryList selectedexpensecatList = null;
     private Button addexpensecat;
     private Button backtoexpense;
+    private ImageView profile;
     Context mContext;
     BaseApiService mApiService;
 
@@ -50,6 +52,7 @@ public class ExpenseCategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_expense_category);
         addexpensecat = (Button) findViewById(R.id.expensecatadd);
         backtoexpense = (Button) findViewById(R.id.backtoexpense);
+        profile = (ImageView) findViewById(R.id.profileexpensecategory);
         lvItems = (ListView) findViewById(R.id.listExpenseCategory);
         mContext = this;
         mApiService = UtilsApi.getAPIService();
@@ -66,6 +69,13 @@ public class ExpenseCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mContext, ExpenseActivity.class));
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, ProfileActivity.class));
             }
         });
 

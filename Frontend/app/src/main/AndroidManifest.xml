@@ -13,6 +13,33 @@
         android:theme="@style/Theme.Moneymanager"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExpenseUpdateCatChooseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateExpenseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".IncomeUpdateCatChooseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateIncomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExpenseAddCatChooseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExpenseAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".IncomeAddCatChooseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".IncomeAddActivity"
+            android:exported="false" />
+        <activity
             android:name=".UpdateExpenseCategoryActivity"
             android:exported="false" />
         <activity

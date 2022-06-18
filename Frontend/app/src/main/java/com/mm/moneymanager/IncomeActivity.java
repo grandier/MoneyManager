@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -49,6 +50,8 @@ public class IncomeActivity extends AppCompatActivity {
         mApiService = UtilsApi.getAPIService();
         Button gotoincomecat = (Button) findViewById(R.id.gotoincomecat);
         Button gotoexpense = (Button) findViewById(R.id.gotoexpense);
+        Button addincome = (Button) findViewById(R.id.incomeadd);
+        ImageView profile = (ImageView) findViewById(R.id.profileincome);
         lvItems = (ListView) findViewById(R.id.listIncome);
         getListRequest();
 
@@ -63,6 +66,20 @@ public class IncomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mContext, IncomeCategoryActivity.class));
+            }
+        });
+
+        addincome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, IncomeAddCatChooseActivity.class));
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, ProfileActivity.class));
             }
         });
 

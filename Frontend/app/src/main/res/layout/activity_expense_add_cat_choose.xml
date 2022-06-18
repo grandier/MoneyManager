@@ -18,20 +18,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Income Category"
+            android:text="Choose Income Category"
             android:textSize="30sp">
 
         </TextView>
-
-        <ImageView
-            android:id="@+id/profileincomecategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/ic_round_person_outline_24">
-
-        </ImageView>
 
     </LinearLayout>
 
@@ -43,10 +33,10 @@
         android:orientation="vertical">
 
         <ListView
-            android:id="@+id/listIncomeCategory"
-            android:background="@drawable/roundedrectangle"
+            android:id="@+id/listExpenseCatChoose"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundedrectangle">
 
         </ListView>
 
@@ -59,17 +49,10 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/incomecatadd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Category">
-
-        </Button>
 
         <Button
-            android:id="@+id/backtoincome"
-            android:layout_width="wrap_content"
+            android:id="@+id/backtoexpensechoose"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="BACK">

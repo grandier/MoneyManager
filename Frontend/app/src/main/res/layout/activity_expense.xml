@@ -23,7 +23,7 @@
         </TextView>
 
         <ImageView
-            android:id="@+id/profile"
+            android:id="@+id/profileexpense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="130dp"
@@ -89,7 +89,7 @@
             android:id="@+id/expenseadd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Income">
+            android:text="Add Expense">
 
         </Button>
     </LinearLayout>

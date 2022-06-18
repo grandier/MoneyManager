@@ -19,6 +19,24 @@ async function register(req,res){
     }
 }
 
+async function showUser(req,res){
+    try{
+        const result = await mmService.showUser(req.user);
+        res.json(result);
+    }catch(err){
+        res.json(err);
+    }
+}
+
+async function deleteUser(req,res){
+    try{
+        const result = await mmService.deleteUser(req.user);
+        res.json(result);
+    }catch(err){
+        res.json(err);
+    }
+}
+
 async function insertCategoryIncome(req,res){
     try{
         const result = await mmService.insertCategoryIncome(req.body, req.user);
@@ -148,16 +166,18 @@ async function updateCategoryExpense(req,res){
 module.exports = {
     login,
     register,
+    showUser,
+    deleteUser,
     insertCategoryIncome,
     insertCategoryExpense,
     showCategoryIncome,
     showCategoryExpense,
-    insertIncome,// 
-    insertExpense,// 
+    insertIncome,
+    insertExpense,
     showIncome,
     showExpense,
-    updateIncome, //
-    updateExpense, //
+    updateIncome, 
+    updateExpense, 
     deleteIncome,
     deleteExpense,
     updateCategoryIncome, 

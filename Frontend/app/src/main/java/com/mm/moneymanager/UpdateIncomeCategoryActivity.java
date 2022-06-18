@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +40,30 @@ public class UpdateIncomeCategoryActivity extends AppCompatActivity {
         Button updatecategoryincomebtn = (Button) findViewById(R.id.catincomeupdatebutton);
         mContext = this;
         mApiService = UtilsApi.getAPIService();
+
+        updatecategoryincomebtn.setEnabled(false);
+
+        updatecategoryincome.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                updatecategoryincomebtn.setEnabled(s.toString().trim().length() != 0);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+
+            }
+        });
 
         updatecategoryincomebtn.setOnClickListener(new View.OnClickListener() {
             @Override

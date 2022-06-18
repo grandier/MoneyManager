@@ -42,6 +42,49 @@ async function register (mm){
     }
 }
 
+async function showUser (user){
+    if(user){
+        const query = `SELECT * FROM users WHERE "User_Id" = '${user.User_Id}'`;
+        const result = await db.query(query);
+        if(result.rowCount === 1){
+            return {
+                message: 'User found',
+                user : result.rows
+            }
+        }else{
+            return {
+                message: 'User not found'
+            }
+        }
+    }else{
+        return {
+            message: 'User not found'
+        }
+    }
+}
+
+async function deleteUser (user){
+    if(user){
+        const query = `DELETE FROM users WHERE "User_Id" = ${user.User_Id}`;
+        const result = await db.query(query);
+        if(result.rowCount === 1){
+            return {
+                message: 'User deleted'
+            }
+        }
+        else{
+            return {
+                message: 'User not found'
+            }
+        }
+    }
+    else{
+        return {
+            message: 'USer not logged in'
+        }
+    }
+}
+
 async function insertCategoryIncome (mm, user){
     const {Jenis} = mm;
     if(user){
@@ -290,7 +333,7 @@ async function deleteIncome (mm, user){
         const result = await db.query(query);
         if(result.rowCount > 0){
             return {
-                message: `Income ${Pendapatan_Id} Deleted`
+                message: `Income Deleted`
             }
         }else{
             return{
@@ -312,7 +355,7 @@ async function deleteExpense (mm, user){
         const result = await db.query(query);
         if(result.rowCount > 0){
             return {
-                message: `Expense ${Pengeluaran_Id} Deleted`
+                message: `Expense Deleted`
             }
         }else{
             return{
@@ -374,6 +417,8 @@ async function updateCategoryExpense (mm, user){
 module.exports = {
     login,
     register,
+    showUser,
+    deleteUser,
     insertCategoryIncome,
     insertCategoryExpense,
     showCategoryIncome,
