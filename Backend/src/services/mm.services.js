@@ -334,7 +334,7 @@ async function updateCategoryIncome (mm, user){
         const result = await db.query(query);
         if(result.rowCount > 0){
             return {
-                message: `Income ${KatPend_Id} Updated`
+                message: `Income Updated`
             }
         }else{
             return{
@@ -356,7 +356,7 @@ async function updateCategoryExpense (mm, user){
         const result = await db.query(query);
         if(result.rowCount > 0){
             return {
-                message: `Expense ${KatPeng_Id} Updated`
+                message: `Expense Updated`
             }
         }else{
             return{

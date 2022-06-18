@@ -13,6 +13,24 @@
         android:theme="@style/Theme.Moneymanager"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".UpdateExpenseCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateIncomeCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExpenseCategoryDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".IncomeCategoryDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddExpenseCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddIncomeCategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ExpenseDetailActivity"
             android:exported="false" />
         <activity

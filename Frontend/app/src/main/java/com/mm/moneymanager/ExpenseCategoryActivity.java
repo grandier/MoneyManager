@@ -3,8 +3,11 @@ package com.mm.moneymanager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -35,7 +38,9 @@ public class ExpenseCategoryActivity extends AppCompatActivity {
     private ArrayAdapter<ExpenseCategoryList> itemsAdapter;
     private ArrayList<ExpenseCategoryList> categoryexpense = new ArrayList<>();
     private ListView lvItems;
+    public static ExpenseCategoryList selectedexpensecatList = null;
     private Button addexpensecat;
+    private Button backtoexpense;
     Context mContext;
     BaseApiService mApiService;
 
@@ -43,9 +48,35 @@ public class ExpenseCategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense_category);
+        addexpensecat = (Button) findViewById(R.id.expensecatadd);
+        backtoexpense = (Button) findViewById(R.id.backtoexpense);
+        lvItems = (ListView) findViewById(R.id.listExpenseCategory);
         mContext = this;
         mApiService = UtilsApi.getAPIService();
         getListRequest();
+
+        addexpensecat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, AddExpenseCategoryActivity.class));
+            }
+        });
+
+        backtoexpense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, ExpenseActivity.class));
+            }
+        });
+
+        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedexpensecatList = categoryexpense.get(position);
+                Intent intent = new Intent(mContext, ExpenseCategoryDetailActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     void getListRequest() {
@@ -63,7 +94,6 @@ public class ExpenseCategoryActivity extends AppCompatActivity {
                                     // Jika login berhasil maka data nama yang ada di response API
                                     // akan diparsing ke activity selanjutnya.
                                     categoryexpense = gson.fromJson(jsonArray.toString(), new TypeToken<ArrayList<ExpenseCategoryList>>() {}.getType());
-                                    lvItems = (ListView) findViewById(R.id.listExpenseCategory);
                                     itemsAdapter = new ArrayAdapter<ExpenseCategoryList>(getApplicationContext(),
                                             android.R.layout.simple_list_item_1, categoryexpense);
                                     lvItems.setAdapter(itemsAdapter);

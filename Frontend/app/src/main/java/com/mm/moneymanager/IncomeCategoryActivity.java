@@ -3,8 +3,11 @@ package com.mm.moneymanager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -35,6 +38,9 @@ public class IncomeCategoryActivity extends AppCompatActivity {
     private ArrayAdapter<IncomeCategoryList> itemsAdapter;
     private ArrayList<IncomeCategoryList> categoryincome = new ArrayList<>();
     private ListView lvItems;
+    public static IncomeCategoryList selectedincomecatList = null;
+    private Button addincomecat;
+    private Button backtoincome;
     Context mContext;
     BaseApiService mApiService;
 
@@ -42,9 +48,36 @@ public class IncomeCategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_income_category);
+        addincomecat = (Button) findViewById(R.id.incomecatadd);
+        backtoincome = (Button) findViewById(R.id.backtoincome);
+        lvItems = (ListView) findViewById(R.id.listIncomeCategory);
         mContext = this;
         mApiService = UtilsApi.getAPIService();
         getListRequest();
+
+        addincomecat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, AddIncomeCategoryActivity.class));
+            }
+        });
+
+        backtoincome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, IncomeActivity.class));
+            }
+        });
+
+        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedincomecatList = categoryincome.get(position);
+                Intent intent = new Intent(mContext, IncomeCategoryDetailActivity.class);
+                //intent.putExtra("income", showIncome.get(position));
+                startActivity(intent);
+            }
+        });
     }
 
     void getListRequest() {
@@ -62,7 +95,6 @@ public class IncomeCategoryActivity extends AppCompatActivity {
                                     // Jika login berhasil maka data nama yang ada di response API
                                     // akan diparsing ke activity selanjutnya.
                                     categoryincome = gson.fromJson(jsonArray.toString(), new TypeToken<ArrayList<IncomeCategoryList>>() {}.getType());
-                                    lvItems = (ListView) findViewById(R.id.listIncomeCategory);
                                     itemsAdapter = new ArrayAdapter<IncomeCategoryList>(getApplicationContext(),
                                             android.R.layout.simple_list_item_1, categoryincome);
                                     lvItems.setAdapter(itemsAdapter);

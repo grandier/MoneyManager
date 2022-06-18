@@ -29,6 +29,7 @@ class SessionCookieJar implements CookieJar {
         }
         return Collections.emptyList();
     }
+
 }
 
 public class RetrofitClient {

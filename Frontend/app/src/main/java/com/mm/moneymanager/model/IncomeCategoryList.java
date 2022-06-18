@@ -5,6 +5,18 @@ public class IncomeCategoryList {
     private String Jenis;
     private int User_Id;
 
+    public int getKatPend_Id() {
+        return KatPend_Id;
+    }
+
+    public String getJenis() {
+        return Jenis;
+    }
+
+    public int getUser_Id() {
+        return User_Id;
+    }
+
     public String toString() {
         return Jenis;
     }

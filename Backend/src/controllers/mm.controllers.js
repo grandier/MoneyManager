@@ -152,14 +152,14 @@ module.exports = {
     insertCategoryExpense,
     showCategoryIncome,
     showCategoryExpense,
-    insertIncome,
-    insertExpense,
+    insertIncome,// 
+    insertExpense,// 
     showIncome,
     showExpense,
-    updateIncome,
-    updateExpense,
+    updateIncome, //
+    updateExpense, //
     deleteIncome,
     deleteExpense,
-    updateCategoryIncome,
-    updateCategoryExpense
+    updateCategoryIncome, 
+    updateCategoryExpense 
 }

@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#feb209"
-    android:orientation="vertical"
-    tools:context=".IncomeDetailActivity">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +36,7 @@
 
 
                 <TextView
-                    android:id="@+id/expensedeskripsi"
+                    android:id="@+id/incomedeskripsi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="57.7dp"
@@ -51,16 +50,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Jumlah"
+                    android:text="Category Name"
                     android:textColor="#c2c2c2"
                     android:textSize="13.3sp" />
 
                 <TextView
-                    android:id="@+id/expensejumlah"
+                    android:id="@+id/expensecatname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Jumlah"
+                    android:text="Name"
                     android:textColor="#000000"
                     android:textSize="15.3sp" />
 
@@ -71,56 +70,8 @@
                     android:layout_marginRight="44.3dp"
                     android:background="#d5d5d5" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Tanggal"
-                    android:textColor="#c2c2c2"
-                    android:textSize="13.3sp" />
-
-                <TextView
-                    android:id="@+id/expensetanggal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="tanggal"
-                    android:textColor="#000000"
-                    android:textSize="15.3sp" />
 
 
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="6.3dp"
-                    android:layout_marginRight="44.3dp"
-                    android:background="#d5d5d5" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Jenis"
-                    android:textColor="#c2c2c2"
-                    android:textSize="13.3sp" />
-
-                <TextView
-                    android:id="@+id/expensejenis"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="Jenis"
-                    android:textColor="#000000"
-                    android:textSize="15.3sp" />
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="6.3dp"
-                    android:layout_marginRight="44.3dp"
-                    android:background="#d5d5d5" />
 
             </LinearLayout>
 
@@ -136,21 +87,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/editexpense"
+            android:id="@+id/editexpensecat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit Expense">
-
+            android:text="Edit Expense Category">
         </Button>
 
-        <Button
-            android:id="@+id/deleteexpense"
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Delete Expense">
-
-        </Button>
 
     </LinearLayout>
 
