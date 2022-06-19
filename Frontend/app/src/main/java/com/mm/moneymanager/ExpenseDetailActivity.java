@@ -2,8 +2,10 @@ package com.mm.moneymanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,17 +30,57 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Expense detail activity.
+ * This class is used to show the detail of the expense. The user can click on the expense to edit the expense. The user can also delete the expense. The user can also click on the back button to go back to the previous page.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class ExpenseDetailActivity extends AppCompatActivity {
 
-    TextView expensedeskripsi, expensejumlah, expensetanggal, expensejenis;
-    Button expenseedit, expensedelete;
+    /**
+     * The Expensedeskripsi.
+     */
+    TextView expensedeskripsi, /**
+     * The Expensejumlah.
+     */
+    expensejumlah, /**
+     * The Expensetanggal.
+     */
+    expensetanggal, /**
+     * The Expensejenis.
+     */
+    expensejenis;
+    /**
+     * The Expenseedit.
+     */
+    Button expenseedit, /**
+     * The Expensedelete.
+     */
+    expensedelete;
 
+    /**
+     * The Loading.
+     */
     ProgressDialog loading;
 
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
+    /**
+     * The constant dateFormatInput.
+     */
     public static final DateFormat dateFormatInput = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+    /**
+     * The constant dateFormatOutput.
+     */
     public static final SimpleDateFormat dateFormatOutput = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
@@ -54,6 +96,10 @@ public class ExpenseDetailActivity extends AppCompatActivity {
         mContext = this;
         mApiService = UtilsApi.getAPIService();
 
+        /*
+         * Add Date format to Expense Date
+         * Show all infromation in TextView from database
+         */
         try {
             Date date = dateFormatInput.parse(ExpenseActivity.selectedexpenseList.getTanggal());
 
@@ -65,6 +111,11 @@ public class ExpenseDetailActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+        /*
+         * Edit Expense button
+         * Open UpdateExpenseActivity
+         * and send data to UpdateExpenseActivity
+         */
         expenseedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,15 +124,50 @@ public class ExpenseDetailActivity extends AppCompatActivity {
             }
         });
 
+        /*
+         * Delete Expense button
+         * Show alert dialog to confirm delete
+         * if user click yes, delete data from database
+         * and back to ExpenseActivity
+         * if user click no, back to ExpenseActivity
+         * and show toast message
+         */
         expensedelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loading = ProgressDialog.show(mContext, null, "Please wait...", true, false);
-                deleteExpense();
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setCancelable(true);
+                builder.setTitle("Are You Sure?");
+                builder.setMessage("You want to delete this expense?");
+                builder.setPositiveButton("Confirm",
+                        new DialogInterface.OnClickListener() {
+                            /*
+                                * Delete Expense
+                                * Show loading dialog
+                             */
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                loading = ProgressDialog.show(mContext, null, "Please wait...", true, false);
+                                deleteExpense();
+                            }
+                        });
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
         }
 
+    /*
+        * Delete Expense from database
+        * Show toast message if delete success or failed
+        * Close loading dialog
+        * Back to ExpenseActivity
+     */
     private void deleteExpense() {
         mApiService.deleteExpense(ExpenseActivity.selectedexpenseList.getPengeluaran_Id())
                 .enqueue(new Callback<ResponseBody>() {

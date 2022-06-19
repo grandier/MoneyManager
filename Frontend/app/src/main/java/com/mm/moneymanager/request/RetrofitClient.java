@@ -12,6 +12,9 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * The type Session cookie jar.
+ */
 class SessionCookieJar implements CookieJar {
 
     private List<Cookie> cookies;
@@ -32,9 +35,18 @@ class SessionCookieJar implements CookieJar {
 
 }
 
+/**
+ * The type Retrofit client.
+ */
 public class RetrofitClient {
     private static Retrofit retrofit = null;
 
+    /**
+     * Get client retrofit.
+     *
+     * @param baseUrl the base url
+     * @return the retrofit
+     */
     public static Retrofit getClient(String baseUrl){
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

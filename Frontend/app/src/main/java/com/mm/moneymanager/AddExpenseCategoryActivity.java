@@ -25,12 +25,25 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Add expense category activity.
+ * This class is used to add the expense category. The app will ask the user to enter the expense category description. The user will be able to add the expense category.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class AddExpenseCategoryActivity extends AppCompatActivity {
 
     private EditText expensecatname;
     private Button addexpensecat;
 
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -44,6 +57,9 @@ public class AddExpenseCategoryActivity extends AppCompatActivity {
 
         addexpensecat.setEnabled(false);
 
+        /*
+        * This is the code for the text watcher for the expense category name
+         */
         expensecatname.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -66,6 +82,9 @@ public class AddExpenseCategoryActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * Listview item click listener
+         */
         addexpensecat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +93,11 @@ public class AddExpenseCategoryActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     *
+     * Add expense category to database from the user input. The user will be redirected to the Expense Category List Activity after the expense category is added to the database.
+     *
+     */
     private void addExpenseCategory() {
         mApiService.insertCategoryExpense(expensecatname.getText().toString())
                 .enqueue(new Callback<ResponseBody>() {

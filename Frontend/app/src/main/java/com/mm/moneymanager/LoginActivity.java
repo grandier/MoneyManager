@@ -27,14 +27,42 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Login activity.
+ * This class is used to login the user and get the token for the user to access the rest of the app without being logged in. The user can also register for the app.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class LoginActivity extends AppCompatActivity {
+    /**
+     * The Loginusername.
+     */
     EditText loginusername;
+    /**
+     * The Loginpassword.
+     */
     EditText loginpassword;
+    /**
+     * The Loginbutton.
+     */
     ImageView loginbutton;
+    /**
+     * The Loginsignup.
+     */
     TextView loginsignup;
+    /**
+     * The Loading.
+     */
     ProgressDialog loading;
 
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -48,12 +76,18 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Init components.
+     */
     private void initComponents(){
         loginusername = (EditText) findViewById(R.id.loginusername);
         loginpassword = (EditText) findViewById(R.id.loginpassword);
         loginbutton = (ImageView) findViewById(R.id.loginbutton);
         loginsignup = (TextView) findViewById(R.id.loginsignup);
 
+        /*
+        * Login button click event to login user and validate the credentials and redirect to dashboard activity if valid credentials are given else display error message to user and keep the user in login activity
+         */
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +96,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * Signup button click event to redirect to signup activity if user is not registered else display error message to user and keep the user in login activity
+         */
         loginsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +107,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    * Request login.
+    * This method is used to request login to the server and validate the credentials and redirect to dashboard activity if valid credentials are given else display error message to user and keep the user in login activity and close the loading dialog
+    * checked username and password is not empty and not null and then request login to the server
+     */
     private void requestLogin(){
         mApiService.loginRequest(loginusername.getText().toString(), loginpassword.getText().toString())
                 .enqueue(new Callback<ResponseBody>() {

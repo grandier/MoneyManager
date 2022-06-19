@@ -25,11 +25,24 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Update income category activity.
+ * This class is used to update the income category. The app will ask the user to enter the income category description. The user will be able to update the income category.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class UpdateIncomeCategoryActivity extends AppCompatActivity {
 
     private EditText updatecategoryincome;
 
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -43,6 +56,9 @@ public class UpdateIncomeCategoryActivity extends AppCompatActivity {
 
         updatecategoryincomebtn.setEnabled(false);
 
+        /*
+        * text watcher to check if the user has entered the required data to update the income category and enable the update button if the user has entered the required data.
+         */
         updatecategoryincome.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -65,6 +81,9 @@ public class UpdateIncomeCategoryActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * button click listener to update the income category. The app will ask the user to enter the income category description. The user will be able to update the income category by using the updateincomecategory method.
+         */
         updatecategoryincomebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +92,10 @@ public class UpdateIncomeCategoryActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    * This method will update the income category. The app will ask the user to enter the income category description. The user will be able to update the income category.
+    * if the user has entered the required data, it will update the income category, but if the user has not entered the required data, it will show a toast message.
+     */
     private void updateincomecategory() {
         mApiService.updateCategoryIncome(IncomeCategoryActivity.selectedincomecatList.getKatPend_Id(), updatecategoryincome.getText().toString())
                 .enqueue(new Callback<ResponseBody>() {

@@ -33,17 +33,34 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Income category activity.
+ * This class is used to display the list of income categories
+ * and to add new income categories
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class IncomeCategoryActivity extends AppCompatActivity {
 
     private ArrayList<String> items;
     private ArrayAdapter<IncomeCategoryList> itemsAdapter;
     private ArrayList<IncomeCategoryList> categoryincome = new ArrayList<>();
     private ListView lvItems;
+    /**
+     * The constant selectedincomecatList.
+     */
     public static IncomeCategoryList selectedincomecatList = null;
     private Button addincomecat;
     private Button backtoincome;
     private ImageView profile;
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -58,6 +75,10 @@ public class IncomeCategoryActivity extends AppCompatActivity {
         mApiService = UtilsApi.getAPIService();
         getListRequest();
 
+        /*
+         * add income category button to add income category activity
+         * if user click add income category button, it will go to add income category activity
+         */
         addincomecat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +86,10 @@ public class IncomeCategoryActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * back button to income activity
+        * if user click back button, it will go to income activity
+         */
         backtoincome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +97,10 @@ public class IncomeCategoryActivity extends AppCompatActivity {
             }
         });
 
+        /*
+            * Listener for go to profile activity
+            * if user click profile button, it will go to profile activity
+         */
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +108,10 @@ public class IncomeCategoryActivity extends AppCompatActivity {
             }
         });
 
+        /*
+            * lvItems Listener to get selected item
+            * if user click on this item, it will go to income category detail activity based on selected item of list
+         */
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -90,6 +123,11 @@ public class IncomeCategoryActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Gets list request.
+     * This method is used to get the list of income categories from database and display it in the list view of income category activity
+     * @return the list request
+     */
     void getListRequest() {
         Gson gson = new Gson();
         mApiService.showcategoryincomeRequest()

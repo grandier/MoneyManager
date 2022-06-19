@@ -27,15 +27,31 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 
+/**
+ * The type Income add activity.
+ * This class is used to add the income. The app will ask the user to enter the income description, amount and date. The user will be able to add the income.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class IncomeAddActivity extends AppCompatActivity {
 
     private EditText addincomedesc;
     private EditText addincomeamount;
     private EditText addincomedate;
     private Button addincomebutton;
+    /**
+     * The Loading.
+     */
     ProgressDialog loading;
 
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -51,6 +67,9 @@ public class IncomeAddActivity extends AppCompatActivity {
 
         addincomebutton.setEnabled(false);
 
+        /*
+        * TextWatcher for addincomeamount EditText to enable/disable addincomebutton based on whether addincomeamount is empty or not
+         */
         addincomedesc.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -69,6 +88,9 @@ public class IncomeAddActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * TextWatcher for addincomeamount EditText to enable/disable addincomebutton (Expense Amount) based on whether addincomeamount is empty or not
+         */
         addincomeamount.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -88,6 +110,9 @@ public class IncomeAddActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * TextWatcher for addincomeamount EditText to enable/disable addincomebutton (Expense Amount) based on whether addincomeamount is empty or not
+         */
         addincomedate.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -107,6 +132,9 @@ public class IncomeAddActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * Income Add Button Click Listener to add Income to DB and redirect to Income List Activity after successful addition
+         */
         addincomebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,6 +145,10 @@ public class IncomeAddActivity extends AppCompatActivity {
 
     }
 
+    /*
+    * Method to add Income to DB and redirect to Income List Activity after successful addition of Income
+    *
+     */
     private void addIncome() {
         if(addincomedesc.getText().toString().isEmpty() || addincomeamount.getText().toString().isEmpty() || addincomedate.getText().toString().isEmpty()){
             Toast.makeText(mContext, "Please fill all the fields", Toast.LENGTH_SHORT).show();

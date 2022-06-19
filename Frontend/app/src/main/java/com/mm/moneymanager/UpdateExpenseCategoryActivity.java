@@ -25,12 +25,25 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Update expense category activity.
+ * This class is used to update the expense category. The app will ask the user to enter the expense category description, amount and date. The user will be able to update the expense category.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class UpdateExpenseCategoryActivity extends AppCompatActivity {
 
     private EditText expensecatname;
     private Button updateexpensecat;
 
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -44,6 +57,9 @@ public class UpdateExpenseCategoryActivity extends AppCompatActivity {
 
         updateexpensecat.setEnabled(false);
 
+        /*
+        * TextWatcher for expensecatname EditText to enable or disable the update expense category button.
+         */
         expensecatname.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -66,6 +82,9 @@ public class UpdateExpenseCategoryActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * OnClickListener for updateexpensecat button. This will update the expense category by calling the updateExpenseCategory method.
+         */
         updateexpensecat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +93,9 @@ public class UpdateExpenseCategoryActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    * This method will update the expense category. The app will ask the user to enter the expense category description. The user will be able to update the expense category.
+     */
     private void updateexpensecat() {
         mApiService.updateCategoryExpense(ExpenseCategoryActivity.selectedexpensecatList.getKatPeng_Id(), expensecatname.getText().toString())
                 .enqueue(new Callback<ResponseBody>() {

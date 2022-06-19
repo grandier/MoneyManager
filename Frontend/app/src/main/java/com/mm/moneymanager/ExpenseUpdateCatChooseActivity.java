@@ -31,15 +31,31 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Expense update cat choose activity.
+ * This class is used to update the expense category. The app will ask the user to enter the expense category name. The user will be able to update the expense category.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class ExpenseUpdateCatChooseActivity extends AppCompatActivity {
 
     private ArrayList<String> items;
     private ArrayAdapter<ExpenseCategoryList> itemsAdapter;
     private ArrayList<ExpenseCategoryList> categoryexpense = new ArrayList<>();
     private ListView lvItems;
+    /**
+     * The constant selectedexpensecatList.
+     */
     public static ExpenseCategoryList selectedexpensecatList = null;
     private Button backtoexpensedetail;
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -52,6 +68,9 @@ public class ExpenseUpdateCatChooseActivity extends AppCompatActivity {
         mApiService = UtilsApi.getAPIService();
         getListRequest();
 
+        /*
+        * Back to expense detail activity button
+         */
         backtoexpensedetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +78,10 @@ public class ExpenseUpdateCatChooseActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        *
+        * Update expense category from listview
+         */
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -68,6 +91,11 @@ public class ExpenseUpdateCatChooseActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Gets list request.
+     * @return the list request of expense category
+     *
+     */
     void getListRequest() {
         Gson gson = new Gson();
         mApiService.showcategoryexpenseRequest()

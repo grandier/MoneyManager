@@ -33,17 +33,33 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Expense category activity.\
+ * This class is used to show the list of expense category and the user can click on the expense category to edit the expense category.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class ExpenseCategoryActivity extends AppCompatActivity {
 
     private ArrayList<String> items;
     private ArrayAdapter<ExpenseCategoryList> itemsAdapter;
     private ArrayList<ExpenseCategoryList> categoryexpense = new ArrayList<>();
     private ListView lvItems;
+    /**
+     * The constant selectedexpensecatList.
+     */
     public static ExpenseCategoryList selectedexpensecatList = null;
     private Button addexpensecat;
     private Button backtoexpense;
     private ImageView profile;
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -58,6 +74,9 @@ public class ExpenseCategoryActivity extends AppCompatActivity {
         mApiService = UtilsApi.getAPIService();
         getListRequest();
 
+        /*
+         * Go to AddExpenseCategory activity
+         */
         addexpensecat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +84,9 @@ public class ExpenseCategoryActivity extends AppCompatActivity {
             }
         });
 
+        /*
+         * Back to expense activity
+         */
         backtoexpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +94,9 @@ public class ExpenseCategoryActivity extends AppCompatActivity {
             }
         });
 
+        /*
+         * Add Listener to Button (Profile)
+         */
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +104,10 @@ public class ExpenseCategoryActivity extends AppCompatActivity {
             }
         });
 
+        /*
+         * Add Listener to ListView (Expense Category)
+         * if user click on this list, it will go to ExpenseCategoryDetailActivity and show detail of this expense category (description) based on selected item
+         */
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -89,6 +118,11 @@ public class ExpenseCategoryActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Gets list request.
+     * Get list of expense category from database and show it in listview (Expense Category) based on user's id (user_id) from database
+     * @return the list request of Expense Category
+     */
     void getListRequest() {
         Gson gson = new Gson();
         mApiService.showcategoryexpenseRequest()

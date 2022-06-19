@@ -31,15 +31,31 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Income add cat choose activity.
+ * This class is used to choose the income category. The app will ask the user to enter the income category name. The user will be able to add the income category.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class IncomeAddCatChooseActivity extends AppCompatActivity {
 
     private ArrayList<String> items;
     private ArrayAdapter<IncomeCategoryList> itemsAdapter;
     private ArrayList<IncomeCategoryList> categoryincome = new ArrayList<>();
     private ListView lvItems;
+    /**
+     * The constant selectedincomecatList.
+     */
     public static IncomeCategoryList selectedincomecatList = null;
     private Button backtoincome;
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -52,6 +68,10 @@ public class IncomeAddCatChooseActivity extends AppCompatActivity {
         mApiService = UtilsApi.getAPIService();
         getListRequest();
 
+        /*
+        * back button to income activity
+        * if user click back button, it will go to income activity
+         */
         backtoincome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +80,10 @@ public class IncomeAddCatChooseActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * Listview item click listener to get the selected item category and send to next activity
+        * if user click on item category
+         */
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -70,6 +94,12 @@ public class IncomeAddCatChooseActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Gets list request
+     * if user click on add category button, it will go to income add activity based on the selected category from listview.
+     * @return the list request of income category
+     *
+     */
     void getListRequest() {
         Gson gson = new Gson();
         mApiService.showcategoryincomeRequest()

@@ -26,15 +26,43 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Register activity.
+ * This class is used to register the user. The app will ask the user to enter the username and password.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class RegisterActivity extends AppCompatActivity {
 
+    /**
+     * The Signupusername.
+     */
     EditText signupusername;
+    /**
+     * The Signuppassword.
+     */
     EditText signuppassword;
+    /**
+     * The Signupbutton.
+     */
     ImageView signupbutton;
+    /**
+     * The Signuplogin.
+     */
     TextView signuplogin;
+    /**
+     * The Loading.
+     */
     ProgressDialog loading;
 
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -48,12 +76,19 @@ public class RegisterActivity extends AppCompatActivity {
         initComponents();
     }
 
+    /*
+        * This method is used to initialize the components.
+     */
     private void initComponents(){
         signupusername = (EditText) findViewById(R.id.signupusername);
         signuppassword = (EditText) findViewById(R.id.signuppassword);
         signupbutton = (ImageView) findViewById(R.id.signupbutton);
         signuplogin = (TextView) findViewById(R.id.signuplogin);
 
+        /*
+        * this button is used to register the user. The user will be redirected to the login page. The user will be able to login after registration.
+        * and call the register method to register the user.
+         */
         signupbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +97,9 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * This button is used to redirect the user to the login page.
+         */
         signuplogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +108,10 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    * This method is used to register the user. The user will be redirected to the login page after successful registration.
+    * from parameter username and password, the app will send the request to the server to register the user.
+     */
     private void requestRegister(){
         mApiService.registerRequest(signupusername.getText().toString(), signuppassword.getText().toString())
                 .enqueue(new Callback<ResponseBody>() {

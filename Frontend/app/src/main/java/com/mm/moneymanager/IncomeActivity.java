@@ -32,14 +32,30 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Income activity.
+ * This class is to show the list of income and the user can click on the income to edit the income and delete the income.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class IncomeActivity extends AppCompatActivity {
 
     private ArrayList<String> items;
     private ArrayAdapter<IncomeList> itemsAdapter;
     private ArrayList<IncomeList> showIncome = new ArrayList<>();
     private ListView lvItems;
+    /**
+     * The constant selectedincomeList.
+     */
     public static IncomeList selectedincomeList = null;
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -55,6 +71,10 @@ public class IncomeActivity extends AppCompatActivity {
         lvItems = (ListView) findViewById(R.id.listIncome);
         getListRequest();
 
+        /*
+        * Listener for back to expense activity
+        * if user click back button, it will go to expense activity
+         */
         gotoexpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +82,10 @@ public class IncomeActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * Add Listener to Button (Go to Income Category Activity)
+        * if user click this button, it will go to income category activity
+         */
         gotoincomecat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +93,10 @@ public class IncomeActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * Add Listener to Button (Add Income)
+        * if user click this button, it will go to add income activity
+         */
         addincome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +104,10 @@ public class IncomeActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * Add Listener to ImageView (Profile)
+        * if user click this image view, it will go to profile activity
+         */
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +115,10 @@ public class IncomeActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * Add Listener to ListView (Income List)
+        * if user click this list view, it will go to income detail activity and show income detail information based on selected income
+         */
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -94,6 +130,10 @@ public class IncomeActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Gets list request.
+     * get income list from database and show it in list view
+     */
     void getListRequest() {
         Gson gson = new Gson();
         mApiService.showincomeRequest()

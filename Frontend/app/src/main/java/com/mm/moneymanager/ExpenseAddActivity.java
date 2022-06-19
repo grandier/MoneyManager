@@ -26,15 +26,31 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 
+/**
+ * The type Expense add activity.
+ * This class is used to add the expense. The app will ask the user to enter the expense description, amount and date. The user will be able to add the expense.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class ExpenseAddActivity extends AppCompatActivity {
 
     private EditText addexpensedesc;
     private EditText addexpenseamount;
     private EditText addexpensedate;
     private Button addexpensebutton;
+    /**
+     * The Loading.
+     */
     ProgressDialog loading;
 
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -50,6 +66,9 @@ public class ExpenseAddActivity extends AppCompatActivity {
 
         addexpensebutton.setEnabled(false);
 
+        /*
+        * Add TextWatcher to EditText (Expense Description)
+         */
         addexpensedesc.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -68,6 +87,9 @@ public class ExpenseAddActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * Add TextWatcher to EditText (Expense Amount)
+         */
         addexpenseamount.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -87,6 +109,9 @@ public class ExpenseAddActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * Add TextWatcher to EditText (Expense Date)
+         */
         addexpensedate.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -106,6 +131,9 @@ public class ExpenseAddActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * Add OnClickListener to Button (Add Expense)
+         */
         addexpensebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +143,10 @@ public class ExpenseAddActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Add expense to database
+     * if success, go to ExpenseListActivity else show error message to user and close activity (ExpenseAddActivity)
+     */
     private void addExpense() {
         if(addexpensedesc.getText().toString().isEmpty() || addexpenseamount.getText().toString().isEmpty() || addexpensedate.getText().toString().isEmpty()){
             Toast.makeText(mContext, "Please fill all the fields", Toast.LENGTH_SHORT).show();

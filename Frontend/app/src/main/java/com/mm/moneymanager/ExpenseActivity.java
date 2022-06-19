@@ -33,14 +33,30 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Expense activity.
+ * This class is to show the list of expense and the user can click on the expense to edit the expense and delete the expense.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class ExpenseActivity extends AppCompatActivity {
 
     private ArrayList<String> items;
     private ArrayAdapter<ExpenseList> itemsAdapter;
     private ArrayList<ExpenseList> showExpense = new ArrayList<>();
     private ListView lvItems;
+    /**
+     * The constant selectedexpenseList.
+     */
     public static ExpenseList selectedexpenseList = null;
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -56,6 +72,10 @@ public class ExpenseActivity extends AppCompatActivity {
         lvItems = (ListView) findViewById(R.id.listExpense);
         getListRequest();
 
+        /*
+         * Add Listener to Button (Go to Income Activity)
+         * if user click on this button, it will go to Income Activity
+         */
         gotoincome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +83,10 @@ public class ExpenseActivity extends AppCompatActivity {
             }
         });
 
+        /*
+         * Add Listener to Button (Go to Expense Category Activity)
+         * if user click back button, it will go to expense category activity
+         */
         gotoexpensecat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +94,10 @@ public class ExpenseActivity extends AppCompatActivity {
             }
         });
 
+        /*
+         * Add Listener to Button (Add Expense)
+         * if user click this button, it will go to add expense category choose activity
+         */
         expenseadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +105,10 @@ public class ExpenseActivity extends AppCompatActivity {
             }
         });
 
+        /*
+         * Add Listener to ImageView (Profile)
+         * if user click on profile, go to ProfileActivity
+         */
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +116,10 @@ public class ExpenseActivity extends AppCompatActivity {
             }
         });
 
+        /*
+         * Add Listener to ListView (Expense List)
+         * if user click on this list, it will go to ExpenseDetailActivity and show detail information (description, amount, date, category) based on selected item
+         */
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -95,6 +131,11 @@ public class ExpenseActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     *
+     * Get list of expense from backend
+     * if success, it will show the list of expense in the listview (lvItems) and show the amount of expense in the textview (totalExpense)
+     */
     void getListRequest() {
         Gson gson = new Gson();
         mApiService.showexpenseRequest()

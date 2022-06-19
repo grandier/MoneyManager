@@ -31,15 +31,31 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Income update cat choose activity.
+ * This class is used for update income but user have to choose category from list of category first then user can update income in the next activity (IncomeUpdateActivity)
+ * @author: Kemas Rafly Omar Thoriq
+ * @version: 1.0
+ * @since: 2022-06-18
+ */
 public class IncomeUpdateCatChooseActivity extends AppCompatActivity {
 
     private ArrayList<String> items;
     private ArrayAdapter<IncomeCategoryList> itemsAdapter;
     private ArrayList<IncomeCategoryList> categoryincome = new ArrayList<>();
     private ListView lvItems;
+    /**
+     * The constant selectedincomecatList.
+     */
     public static IncomeCategoryList selectedincomecatList = null;
     private Button backtoincomedetail;
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -52,6 +68,10 @@ public class IncomeUpdateCatChooseActivity extends AppCompatActivity {
         mApiService = UtilsApi.getAPIService();
         getListRequest();
 
+        /*
+        * back button to income activity
+        * if user click back button, go to income activity
+         */
         backtoincomedetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +80,9 @@ public class IncomeUpdateCatChooseActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * when user click listview, it will show the selected category and send to next activity to update income based on selected category
+         */
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -70,6 +93,11 @@ public class IncomeUpdateCatChooseActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Gets list request.
+     * this method will get the list of income category from database and show it to user in listview
+     * @return the list request
+     */
     void getListRequest() {
         Gson gson = new Gson();
         mApiService.showcategoryincomeRequest()

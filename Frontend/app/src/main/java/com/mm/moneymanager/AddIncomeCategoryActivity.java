@@ -29,13 +29,29 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Add income category activity.
+ * This class is used to add the income category. The app will ask the user to enter the name of the income category. The user will be able to add the income category.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class AddIncomeCategoryActivity extends AppCompatActivity {
 
     private EditText incomecatname;
     private Button addincomecat;
+    /**
+     * The Loading.
+     */
     ProgressDialog loading;
 
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -49,6 +65,9 @@ public class AddIncomeCategoryActivity extends AppCompatActivity {
 
         addincomecat.setEnabled(false);
 
+        /*
+        * Add TextWatcher to EditText (Income Category Name)
+        */
         incomecatname.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -71,6 +90,9 @@ public class AddIncomeCategoryActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * add income category button click event
+         */
         addincomecat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +100,10 @@ public class AddIncomeCategoryActivity extends AppCompatActivity {
             }
         });
     }
+
+    /*
+     * Add Income Category to database based on the user input in the EditText (Income Category Name) and the user will be redirected to the Income Category List Activity after the income category is added to the database.
+     */
 
     private void addIncomeCategory() {
         mApiService.insertCategoryIncome(incomecatname.getText().toString())

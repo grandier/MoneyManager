@@ -26,14 +26,30 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 
+/**
+ * The type Update expense activity.
+ * This class is used to update the expense. The app will ask the user to enter the expense description, amount and date. The user will be able to update the expense.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class UpdateExpenseActivity extends AppCompatActivity {
 
     private EditText updateexpensedesc;
     private EditText updateexpenseamount;
     private EditText updateexpensedate;
+    /**
+     * The Loading.
+     */
     ProgressDialog loading;
 
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -50,6 +66,9 @@ public class UpdateExpenseActivity extends AppCompatActivity {
 
         updateexpensebutton.setEnabled(false);
 
+        /*
+        * add text watcher to the edit text to check if the user has entered the required data or not. If the user has entered the required data, the button will be enabled.
+         */
         updateexpensedesc.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -68,6 +87,9 @@ public class UpdateExpenseActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * add text watcher to the edit text to check if the user has entered the required data or not. If the user has entered the required data, the button will be enabled.
+         */
         updateexpenseamount.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -87,6 +109,9 @@ public class UpdateExpenseActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * add text watcher to the edit text to check if the user has entered the required data or not. If the user has entered the required data, the button will be enabled.
+         */
         updateexpensedate.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -106,6 +131,10 @@ public class UpdateExpenseActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * add click listener to the button to update the expense. The app will ask the user to enter the expense description, amount and date. The user will be able to update the expense.
+        * by calling the update expense method to update the expense.
+         */
         updateexpensebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +144,10 @@ public class UpdateExpenseActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    * This method is used to update the expense. The app will ask the user to enter the expense description, amount and date. The user will be able to update the expense.
+    * if the user has entered the required data, the app will call the update expense method to update the expense. If the user has not entered the required data, the app will show a toast message.
+     */
     private void updateExpense() {
         if (updateexpensedesc.getText().toString().isEmpty() || updateexpenseamount.getText().toString().isEmpty() || updateexpensedate.getText().toString().isEmpty()) {
             Toast.makeText(mContext, "Please fill all field", Toast.LENGTH_SHORT).show();

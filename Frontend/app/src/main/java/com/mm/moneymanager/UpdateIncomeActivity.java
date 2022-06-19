@@ -26,14 +26,30 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 
+/**
+ * The type Update income activity.
+ * This class is used to update the income. The app will ask the user to enter the income description, amount and date. The user will be able to update the income.
+ * @author Kemas Rafly Omar Thoriq
+ * @version 1.0
+ * @since 2022-06-18
+ */
 public class UpdateIncomeActivity extends AppCompatActivity {
 
     private EditText updateincomedesc;
     private EditText updateincomeamount;
     private EditText updateincomedate;
+    /**
+     * The Loading.
+     */
     ProgressDialog loading;
 
+    /**
+     * The M context.
+     */
     Context mContext;
+    /**
+     * The M api service.
+     */
     BaseApiService mApiService;
 
     @Override
@@ -50,6 +66,9 @@ public class UpdateIncomeActivity extends AppCompatActivity {
 
         updateincomebutton.setEnabled(false);
 
+        /*
+        * text watcher for the update income button to enable it when the user has entered all the required information
+         */
         updateincomedesc.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -68,6 +87,9 @@ public class UpdateIncomeActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * text watcher for the update income button to enable it when the user has entered all the required information
+         */
         updateincomeamount.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -87,6 +109,9 @@ public class UpdateIncomeActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * text watcher for the update income button to enable it when the user has entered all the required information
+         */
         updateincomedate.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -106,6 +131,9 @@ public class UpdateIncomeActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        * on click listener for the update income button to update the income information to the database by calling the updateIncome method
+         */
         updateincomebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +143,9 @@ public class UpdateIncomeActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    * method to update the income information to the database. The app will ask the user to enter the income description, amount and date. The user will be able to update the income.
+     */
     private void updateIncome() {
         if (updateincomedesc.getText().toString().isEmpty() || updateincomeamount.getText().toString().isEmpty() || updateincomedate.getText().toString().isEmpty()) {
             Toast.makeText(mContext, "Please fill all field", Toast.LENGTH_SHORT).show();
