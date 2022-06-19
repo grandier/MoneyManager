@@ -13,6 +13,10 @@ This project is made by myself, a student of computer engineering Universitas In
 1. Kemas Rafly Omar Thoriq 
 
 ---
+## Postman Documentation Collection
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/18433581-32574dba-3547-4e2a-bfb1-75ab64b095bf?action=collection%2Ffork&collection-url=entityId%3D18433581-32574dba-3547-4e2a-bfb1-75ab64b095bf%26entityType%3Dcollection%26workspaceId%3D34fd0075-ab40-4495-aace-ca4886cc2c61)
+
+---
 ## Penjelasan mengenai Table pada Program
 ### 1.  ```users```
 
