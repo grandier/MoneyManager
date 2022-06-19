@@ -67,23 +67,20 @@ Table Kategori_Pendapatan adalah table yang berguna untuk menyimpan data ```Kate
 
 ---
 # Tampilan Relation Table dan UML
-<details>
-<summary>```Table Relational atau ERD:```</summary>
-<br>
-![alt text!](https://github.com/grandier/MoneyManager/blob/master/Assets/ERD_MoneyManager.png)
-</details>
+```Table Relational atau ERD:```
 
-<details>
-<summary>```UML:```</summary>
-<br>
+![alt text!](https://github.com/grandier/MoneyManager/blob/master/Assets/ERD_MoneyManager.png)
+
+```UML:```
+
 ![alt text!](https://github.com/grandier/MoneyManager/blob/master/Assets/UML_MoneyManager.png)
-</details>
+
 
 ---
 # Tampilan FlowChart
-<details>
-<summary>```FlowChart:```</summary>
-<br>
+
+```FlowChart:```
+
 ![alt text!](https://github.com/grandier/MoneyManager/blob/master/Assets/Flowchart_MoneyManager.png)
-</details>
+
 ---
