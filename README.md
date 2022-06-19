@@ -70,13 +70,13 @@ Table Kategori_Pendapatan adalah table yang berguna untuk menyimpan data ```Kate
 <details>
 <summary>```Table Relational atau ERD:```</summary>
 <br>
-![alt text](https://github.com/grandier/MoneyManager/blob/master/Assets/ERD_MoneyManager.png)
+![alt text!](https://github.com/grandier/MoneyManager/blob/master/Assets/ERD_MoneyManager.png)
 </details>
 
 <details>
 <summary>```UML:```</summary>
 <br>
-![alt text](https://github.com/grandier/MoneyManager/blob/master/Assets/UML_MoneyManager.png)
+![alt text!](https://github.com/grandier/MoneyManager/blob/master/Assets/UML_MoneyManager.png)
 </details>
 
 ---
@@ -84,6 +84,6 @@ Table Kategori_Pendapatan adalah table yang berguna untuk menyimpan data ```Kate
 <details>
 <summary>```FlowChart:```</summary>
 <br>
-![alt text](https://github.com/grandier/MoneyManager/blob/master/Assets/Flowchart_MoneyManager.png)
+![alt text!](https://github.com/grandier/MoneyManager/blob/master/Assets/Flowchart_MoneyManager.png)
 </details>
 ---
