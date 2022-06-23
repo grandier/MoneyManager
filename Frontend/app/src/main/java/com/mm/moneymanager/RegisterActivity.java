@@ -138,6 +138,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Log.i("debug", "onResponse: NOT SUCCESS");
                             loading.dismiss();
                         }
+                        Toast.makeText(mContext, "REGISTRATION FAILED", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
