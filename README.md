@@ -10,7 +10,7 @@ Sebuah Aplikasi yang membantu memanage keuangan personal berbasis Android yang d
 
 This project is made by myself, a student of computer engineering Universitas Indonesia:
 
-1. Kemas Rafly Omar Thoriq 
+1. [Kemas Rafly Omar Thoriq](https://github.com/grandier) 
 
 ---
 ## Postman Documentation Collection
